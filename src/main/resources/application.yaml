@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/spring2023_db
+    url: jdbc:postgresql://localhost:5432/pp2023_db
     username: postgres
     password: 123456654321
     driver-class-name: org.postgresql.Driver
