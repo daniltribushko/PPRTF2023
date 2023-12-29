@@ -69,6 +69,6 @@ public class FileServiceImp implements FileService {
         if (!user.getId().equals(file.getUser().getId())){
             throw new UserNotOwnerException(userName);
         }
-        return new ClassPathResource("static/userfiles/" +  userName + "_" + user.getUserName() + ".txt");
+        return new ClassPathResource("static/models/" +  userName + "_" + user.getUserName() + ".txt");
     }
 }
