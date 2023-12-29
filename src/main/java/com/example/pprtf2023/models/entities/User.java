@@ -3,7 +3,9 @@ package com.example.pprtf2023.models.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,11 +39,20 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false))
     private Set<Role> roles;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<File> files;
+
     public User(String userName, String email, String sureName, String name, String password) {
         this.userName = userName;
         this.email = email;
         this.sureName = sureName;
         this.name = name;
         this.password = password;
+        files = new ArrayList<>();
+    }
+
+    public void addFile(File file){
+        file.setUser(this);
+        files.add(file);
     }
 }

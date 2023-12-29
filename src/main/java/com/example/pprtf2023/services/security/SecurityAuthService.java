@@ -39,6 +39,7 @@ public class SecurityAuthService {
                     authRequest.getUserName(),
                     authRequest.getPassword()));
         } catch (BadCredentialsException e) {
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(
                     new AppError(HttpStatus.UNAUTHORIZED.value(),
                             "Incorrect login or password"), HttpStatus.UNAUTHORIZED);

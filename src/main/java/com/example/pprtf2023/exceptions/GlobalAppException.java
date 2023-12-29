@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class GlobalAppException extends RuntimeException{
-    private Integer status;
-    private String message;
+    protected Integer status;
+    protected String message;
 }

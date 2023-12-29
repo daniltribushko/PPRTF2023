@@ -5,6 +5,7 @@ import com.example.pprtf2023.models.dtos.request.JwtRequest;
 import com.example.pprtf2023.services.security.SecurityAuthService;
 import com.example.pprtf2023.services.security.SecurityUserService;
 import com.example.pprtf2023.services.utils.JwtTokenUtils;
+import jakarta.persistence.GeneratedValue;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +38,11 @@ public class AuthController {
     @PostMapping("/registration")
     public ResponseEntity<?> createNewUser(@Valid CreateNewUserRequest request) {
         return authService.createNewUser(request);
+    }
+
+    @GetMapping("/test")
+    @ResponseBody
+    public String test(){
+        return "Hello World";
     }
 }
