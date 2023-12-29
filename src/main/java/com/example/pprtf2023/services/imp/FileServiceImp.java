@@ -12,14 +12,11 @@ import com.example.pprtf2023.services.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -47,7 +44,7 @@ public class FileServiceImp implements FileService {
             throw new FileIsEmptyFileException();
         }
         try (InputStream inputStream = multipartFile.getInputStream()){
-            String filePath = PATH + "/" + userName + "_" + user.getUserName() + ".txt";
+            String filePath = PATH + "/" + userName + "_" + (user.getFiles().size()  + 1) + ".txt";
             Path path = Path.of(filePath);
             File file = new File(filePath);
             user.addFile(file);
